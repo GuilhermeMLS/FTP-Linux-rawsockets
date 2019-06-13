@@ -1,4 +1,4 @@
-# Install script for directory: /Users/guilhermemorais/CLionProjects/trab1_redes
+# Install script for directory: /Users/guilhermemorais/CLionProjects/redes1/trab1-redes
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -40,5 +40,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/Users/guilhermemorais/CLionProjects/trab1_redes/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/Users/guilhermemorais/CLionProjects/redes1/trab1-redes/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

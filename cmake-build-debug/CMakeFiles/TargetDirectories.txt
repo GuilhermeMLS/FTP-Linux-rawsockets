@@ -1,3 +1,3 @@
-/Users/guilhermemorais/CLionProjects/trab1_redes/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/Users/guilhermemorais/CLionProjects/trab1_redes/cmake-build-debug/CMakeFiles/edit_cache.dir
-/Users/guilhermemorais/CLionProjects/trab1_redes/cmake-build-debug/CMakeFiles/trab1_redes.dir
+/Users/guilhermemorais/CLionProjects/redes1/trab1-redes/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/guilhermemorais/CLionProjects/redes1/trab1-redes/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/guilhermemorais/CLionProjects/redes1/trab1-redes/cmake-build-debug/CMakeFiles/trab1_redes.dir
