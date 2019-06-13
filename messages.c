@@ -30,6 +30,7 @@ int checkCRC(message *msg){
     // Leo está implementando
 }
 
+// TODO: justificar o timeOut escolhido depois; verificar o funcionamento desta função
 int sendMessage(int socket, message *msg){
     message receive;
     msg->init = PREAMBLE;
@@ -183,6 +184,7 @@ void printMessage(message *msg){
     printf("CRC: %d\n", msg->crc);
 }
 
+// Checar essa função, acho que não está correta
 int checkSequence(message *msg, unsigned int *seq){
     int next_seq = (*seq+1) % 64;
     if(msg->seq == next_seq){
