@@ -15,7 +15,7 @@ unsigned int seq_receive;
 char context = LOCAL;
 
 int main(int argc, char *argv[]){
-    int socket  = ConnectionRawSocket(argv[1]);
+    int socket  = RawSocketConnection(argv[1]);
     seq_send    = 0;
     seq_receive = 0;
     char *line;

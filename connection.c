@@ -7,7 +7,7 @@ int RawSocketConnection(char *device)
     struct sockaddr_ll address;
     struct packet_mreq mr;
 
-    // create socket
+    // cria socket
     socket = socket(AF_PACKET, SOCK_RAW, htons(ETH_P_ALL));
     if (socket == -1) {
         printf("Socket error\n");
@@ -22,7 +22,7 @@ int RawSocketConnection(char *device)
         exit(-1);
     }
 
-    // device IP
+    // IP do dispositivo
     memset(&address, 0, sizeof(address));
     address.sll_family = AF_PACKET;
     address.sll_protocol = htons(ETH_P_ALL);
@@ -32,7 +32,7 @@ int RawSocketConnection(char *device)
         exit(-1);
     }
 
-    // promiscuous mode
+    // modo promíscuo
     memset(&mr, 0, sizeof(mr));
     mr.mr_ifindex = ir.ifr_ifindex;
     mr.mr_type = PACKET_MR_PROMISC;
