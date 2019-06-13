@@ -1,11 +1,13 @@
 #ifndef __MSGS
-#define  __MSGS
+#define __MSGS
 
 #include <stdio.h>
-#include "conexao.h"
+#include <stdlib.h>
+
+// #include "conexao.h"
 
 #define PREAMBULO 126 // (01111110)b2
-#define TAM_DADOS 31
+#define TAM_DADOS 20
 #define SIZE_MSG 64
 
 #define TIPO_ACK 0
@@ -29,33 +31,39 @@
 #define SEQ_REPET 'R'
 #define SEQ_NOTOK 'N'
 
+#define CRC_POL 0b1001
+
 extern unsigned int seq_envia;
 extern unsigned int seq_recebe;
 
-typedef struct {
-	unsigned char inicio;
-	unsigned int tam:5;
-	unsigned int seq:6;
-	unsigned int tipo:5;
-	unsigned char dados[60];
-	unsigned char paridade;
+typedef struct
+{
+    unsigned char inicio;
+    unsigned int tam : 5;
+    unsigned int seq : 6;
+    unsigned int tipo : 5;
+    unsigned char dados[60];
+    unsigned char paridade;
 } mensagem;
 
-void montaMensagem(mensagem *msg, unsigned int tipo, unsigned int tam, char *dados);
+// void montaMensagem(mensagem *msg, unsigned int tipo, unsigned int tam, char *dados);
 
-unsigned char calculaParidade(mensagem *msg);
+// unsigned char calculaParidade(mensagem *msg);
 
-int checaParidade(mensagem *msg);
+// int checaParidade(mensagem *msg);
 
-int enviaMensagem(int socket, mensagem *msg);
+// int enviaMensagem(int socket, mensagem *msg);
 
-int enviaOK(int socket);
+// int enviaOK(int socket);
 
-int enviaQUIT(int socket);
+// int enviaQUIT(int socket);
 
-int recebeMensagem(int socket, mensagem *msg);
+// int recebeMensagem(int socket, mensagem *msg);
 
-void imprimeMensagem(mensagem *msg);
+// void imprimeMensagem(mensagem *msg);
 
-int checaSequencia(mensagem *msg, unsigned int *seq);
+// int checaSequencia(mensagem *msg, unsigned int *seq);
+
+unsigned char calculateCRC(char *msg);
+
 #endif
