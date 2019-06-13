@@ -93,7 +93,7 @@ void masterPUT(int socket, char *file_name){
 
     if(type == TYPE_ERROR){
         if(msg_receive.data[0] == 3){
-            printf("space not available\n");
+            printf("storage not available\n");
         } else {
             printf("unknown error\n");
         }
@@ -146,27 +146,27 @@ void masterGET(int socket, char *file_name){
 
         return;
     }
-//PAREI AQUI CARAI
+
     while(receiveMessage(socket, &msg_receive) != TYPE_SIZE);
 
     seq_send++;
 
     unsigned char data[1];
-    long long int tam;
+    long long int size;
 
-    sscanf(msg_receive.data, "%lld", &tam);
-    if(checaEspaco(tam)){
-        enviaOK(socket);
-        leArquivo(socket, file_name);
+    sscanf(msg_receive.data, "%lld", &size);
+    if(checkSpace(size)){
+        sendOK(socket);
+        readFile(socket, file_name);
     } else {
         data[0] = 3;
         mountMessage(&msg_send, TYPE_ERROR, 1, (char *) data);
         sendMessage(socket, &msg_send);
-        printf("espaço insuficiente\n");
+        printf("not enough storage\n");
     }
 }
 
-void escravoGET(int socket, char *file_name){
+void slaveGET(int socket, char *file_name){
     message msg_receive;
     message msg_send;
     char data[DATA_SIZE];
@@ -183,11 +183,12 @@ void escravoGET(int socket, char *file_name){
         }
         seq_send++;
         sendMessage(socket, &msg_send);
+
         return;
     }
 
     seq_send++;
-    enviaOK(socket);
+    sendOK(socket);
 
     seq_send++;
     struct stat starq;
@@ -209,21 +210,21 @@ void escravoGET(int socket, char *file_name){
 
 }
 
-void mestreLS(int socket, int args){
+void masterLS(int socket, int args){
     message msg_send;
     seq_send++;
     char data[DATA_SIZE];
     data[0] = 1;
     sprintf(data, "%d", args);
-    mountMessage(&msg_send, TIPO_LS, 1, data);
+    mountMessage(&msg_send, TYPE_LS, 1, data);
     sendMessage(socket, &msg_send);
 
-    leLS(socket);
+    readLS(socket);
 }
 
-void escravoLS(int socket, int args){
+void slaveLS(int socket, int args){
     int c_read = 0;
-    FILE *file = chamaLS(args - '0'); //gambiarra esquista
+    FILE *file = callLS(args - '0');
     char c;
     char data[DATA_SIZE];
     message msg_send;
@@ -249,11 +250,11 @@ void escravoLS(int socket, int args){
     fclose(file);
 }
 
-void mestreCD(int socket, char *nome_dir){
+void masterCD(int socket, char *dir_name){
     message msg_send;
     message msg_receive;
     seq_send++;
-    mountMessage(&msg_send, TIPO_CD, strlen(nome_dir), nome_dir);
+    mountMessage(&msg_send, TYPE_CD, strlen(dir_name), dir_name);
     sendMessage(socket, &msg_send);
 
     int type;
@@ -263,19 +264,19 @@ void mestreCD(int socket, char *nome_dir){
 
     if(type == TYPE_ERROR){
         if(msg_receive.data[0] == 1){
-            printf("diretório não existe\n");
+            printf("directory doesn't exist\n");
         } else if (msg_receive.data[0] == 2){
-            printf("acesso negado\n");
+            printf("access denied\n");
         } else {
-            printf("erro desconhecido\n");
+            printf("unknown error\n");
         }
     }
 }
 
-void escravoCD(int socket, char *nome_dir){
+void slaveCD(int socket, char *dir_name){
     message msg_send;
 
-    if(chdir(nome_dir) == -1){
+    if(chdir(dir_name) == -1){
         seq_send++;
         unsigned char data[1];
         switch(errno){
