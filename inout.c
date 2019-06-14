@@ -155,7 +155,7 @@ int executeCommand(int socket, char type, char *line){
 int executeOrder(int socket, message msg){
     switch(msg.type){
         case TYPE_CD:
-            slaceCD(socket, (char *) msg.data);
+            slaveCD(socket, (char *) msg.data);
             break;
         case TYPE_LS:
             slaveLS(socket, msg.data[0]);

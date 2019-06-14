@@ -23,11 +23,12 @@ void mountMessage(message *msg, unsigned int type, unsigned int size, char *data
 }
 
 unsigned char calculateCRC(message *msg){
-    // Leo está implementando
+   return 0;
+ // Leo está implementando
 }
 
 int checkCRC(message *msg){
-    // Leo está implementando
+    return 1;// Leo está implementando
 }
 
 // TODO: justificar o timeOut escolhido depois; verificar o funcionamento desta função

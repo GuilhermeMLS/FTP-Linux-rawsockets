@@ -23,6 +23,7 @@ int main(int argc, char *argv[]){
     while(1){
         int cmd = readCommand(&line);
         executeCommand(socket, cmd, line);
+        printf("\n");
     }
 
     return 0;
