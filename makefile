@@ -1,5 +1,5 @@
 CC = gcc
-CFLAGS = -Wall -g #-DDEBUG
+CFLAGS = -Wall -g -DDEBUG
 OBJECTS = connection.o messages.o commands.o inout.o
 LDLIBS = -lreadline
 all: master slave
