@@ -7,7 +7,7 @@
 #include "inout.h"
 #include "messages.h"
 #include "commands.h"
-#include "conexaoRawSocket.c.h"
+#include "conexaoRawSocket.h"
 
 unsigned int seq_send;
 unsigned int seq_receive;
