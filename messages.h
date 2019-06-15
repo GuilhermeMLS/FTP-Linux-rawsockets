@@ -8,7 +8,7 @@
 #define PREAMBLE 126
 // #define MSG_SIZE 64
 #define SIZE_MSG sizeof(message)//64
-#define DATA_SIZE 63// sizeof(message.data)
+#define DATA_SIZE 60// sizeof(message.data)
 #define SEQ_SIZE 32
 //#define TYPE_EMPTY 1
 //#define TYPE_SIZE 2

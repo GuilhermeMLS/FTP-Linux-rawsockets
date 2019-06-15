@@ -1,0 +1,9 @@
+{
+    "files.associations": {
+        "connection.h": "c",
+        "socket.h": "c",
+        "conexaorawsocket.h": "c",
+        "inout.h": "c",
+        "unistd.h": "c"
+    }
+}

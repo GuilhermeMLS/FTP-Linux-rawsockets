@@ -14,6 +14,7 @@ unsigned int seq_receive;
 
 char context = LOCAL;
 
+
 int main(int argc, char *argv[]){
     if (argc < 3) {
         printf("Error: missing parameter\n");
@@ -49,11 +50,9 @@ int main(int argc, char *argv[]){
         printf("Error: parameter kermit type invalid\n");
         printf("Usage:\n For master./kermit <socket> m\n For slave ./kermit <socket> s\n");
         return 1;
+
     }
 
     return 0;
 }
-
-
-
 
