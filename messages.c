@@ -51,25 +51,28 @@ void crcInit(void)
 }
 unsigned char calculateCRC(message *msg)
 {
-    char *msg_calc = (char *)msg;
-    static int init = 0;
-    if (!init)
-    {
+    if(0){
+        char *msg_calc = (char *)msg;
+        static int init = 0;
+        if (!init)
+        {
 #ifdef DEBUG
-        printf("\x1B[33mINICIALIZANDO CRC\x1B[0m");
+            printf("\x1B[33mINICIALIZANDO CRC\x1B[0m");
 #endif
+            crcInit();
+            init = 1;
+        }
         crcInit();
-        init = 1;
+        crc_t data;
+        crc_t remainder = 0;
+        for (int byte = 1; byte < (DATA_SIZE); ++byte)
+        {
+            data = msg_calc[byte] ^ (remainder >> (WIDTH - 8));
+            remainder = crcTable[data] ^ (remainder << 8);
+        }
+        return (remainder);
     }
-    crcInit();
-    crc_t data;
-    crc_t remainder = 0;
-    for (int byte = 1; byte < (DATA_SIZE); ++byte)
-    {
-        data = msg_calc[byte] ^ (remainder >> (WIDTH - 8));
-        remainder = crcTable[data] ^ (remainder << 8);
-    }
-    return (remainder);
+    return 1;
 }
 
 int checkCRC(message *msg)
