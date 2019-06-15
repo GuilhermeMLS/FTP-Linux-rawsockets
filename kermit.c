@@ -20,7 +20,7 @@ int main(int argc, char *argv[]){
         printf("Usage:\n For master./kermit <socket> m\n For slave ./kermit <socket> s\n");
         return 1;
     }
-    if (argv[2] = 'm') {
+    if (*(argv[2]) == 'm') {
         //master
         int socket  = ConexaoRawSocket(argv[1]);
         seq_send    = 0;
@@ -32,7 +32,7 @@ int main(int argc, char *argv[]){
             executeCommand(socket, cmd, line);
             printf("\n");
         }
-    } else if (argv[2] = 's') {
+    } else if (*(argv[2]) == 's') {
         //slave
         context = 0;
         int socket  = ConexaoRawSocket(argv[1]);
