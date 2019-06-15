@@ -29,7 +29,7 @@ void mountMessage(message *msg, unsigned int type, unsigned int size, char *data
 crc_t crcTable[256];
 void crcInit(void)
 {
-    crc_t remainder=0;
+    crc_t remainder = 0;
     for (int dividend = 0; dividend < 256; ++dividend)
     {
         remainder = dividend << (WIDTH - 8);
@@ -54,10 +54,10 @@ unsigned char calculateCRC(message *msg)
     char *msg_calc = (char *)msg;
     static int init = 0;
     if (!init)
-    {   
-        #ifdef DEBUG
-        printf ("\x1B[33mINICIALIZANDO CRC\x1B[0m");
-        #endif
+    {
+#ifdef DEBUG
+        printf("\x1B[33mINICIALIZANDO CRC\x1B[0m");
+#endif
         crcInit();
         init = 1;
     }
@@ -83,7 +83,8 @@ int checkCRC(message *msg)
         printf("\x1B[31mCRC Error\x1B[0m: received=%d, calculated =%d\n", crc, rCrc);
     }
 #endif
-    return 1; (crc == rCrc);
+    return 1;
+    (crc == rCrc);
 }
 
 // TODO: justificar o timeOut escolhido depois; verificar o funcionamento desta função
@@ -178,9 +179,9 @@ int sendOK(int socket)
         printf("---> SENDING: \n");
         printMessage(&msg);
 #endif
-        delay(DELAY);
+
         send(socket, &msg, SIZE_MSG, 0);
-    } while (receiveMessage(socket, &receive) != TYPE_ACK) ;
+    } while (receiveMessage(socket, &receive) != TYPE_ACK);
 
     return 0;
 }
@@ -268,7 +269,7 @@ void printMessage(message *msg)
 // Checar essa função, acho que não está correta
 int checkSequence(message *msg, unsigned int *seq)
 {
-    int next_seq = (*seq + 1) % 64;
+    int next_seq = (*seq + 1) % SEQ_SIZE;
     if (msg->seq == next_seq)
     {
         *seq = next_seq;
@@ -287,12 +288,12 @@ int checkSequence(message *msg, unsigned int *seq)
     }
 }
 
-void delay(int number_of_milliseconds) 
-{ 
-    // Stroing start time 
-    clock_t start_time = clock(); 
-  
-    // looping till required time is not acheived 
-    while (clock() < start_time + number_of_milliseconds) 
-        ; 
-} 
+void delay(int number_of_milliseconds)
+{
+    // Stroing start time
+    clock_t start_time = clock();
+
+    // looping till required time is not acheived
+    while (clock() < start_time + number_of_milliseconds)
+        ;
+}
