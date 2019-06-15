@@ -17,10 +17,10 @@ char context = LOCAL;
 int main(int argc, char *argv[]){
     if (argc < 3) {
         printf("Error: missing parameter\n");
-        printf("Usage:\n For master./kermit <socket> m\n For slave ./kermit <socket> s");
+        printf("Usage:\n For master./kermit <socket> m\n For slave ./kermit <socket> s\n");
         return 1;
     }
-    if (argv[2] = "m") {
+    if (argv[2] = 'm') {
         //master
         int socket  = ConexaoRawSocket(argv[1]);
         seq_send    = 0;
@@ -32,8 +32,9 @@ int main(int argc, char *argv[]){
             executeCommand(socket, cmd, line);
             printf("\n");
         }
-    } else if ("s") {
+    } else if (argv[2] = 's') {
         //slave
+        context = 0;
         int socket  = ConexaoRawSocket(argv[1]);
         seq_send    = 0;
         seq_receive = 0;
@@ -46,7 +47,7 @@ int main(int argc, char *argv[]){
         }
     } else {
         printf("Error: parameter kermit type invalid\n");
-        printf("Usage:\n For master./kermit <socket> m\n For slave ./kermit <socket> s");
+        printf("Usage:\n For master./kermit <socket> m\n For slave ./kermit <socket> s\n");
         return 1;
     }
 
