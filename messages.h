@@ -33,7 +33,7 @@
 #define SEQ_REPET 'R'
 #define SEQ_NOTOK 'N'
 
-#define DELAY 1
+#define DELAY 0
 #define TIME_OUT 1024
 typedef unsigned char crc_t;
 

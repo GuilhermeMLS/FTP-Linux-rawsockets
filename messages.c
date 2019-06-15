@@ -83,7 +83,7 @@ int checkCRC(message *msg)
         printf("\x1B[31mCRC Error\x1B[0m: received=%d, calculated =%d\n", crc, rCrc);
     }
 #endif
-    return (crc == rCrc);
+    return 1; (crc == rCrc);
 }
 
 // TODO: justificar o timeOut escolhido depois; verificar o funcionamento desta função
