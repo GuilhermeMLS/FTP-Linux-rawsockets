@@ -11,6 +11,6 @@
     #include <arpa/inet.h>
     #include <stdio.h>
 
-    int rawSocketConnection(char *device);
+    int ConexaoRawSocket(char *device);
 
 #endif
