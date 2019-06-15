@@ -3,7 +3,7 @@
 #include <sys/types.h>
 
 #include "messages.h"
-#include "connection.h"
+#include "conexaoRawSocket.h"
 
 struct timeval time_to;
 
