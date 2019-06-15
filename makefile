@@ -1,18 +1,19 @@
 CC = gcc
 CFLAGS = -Wall -g -DDEBUG
-OBJECTS = connection.o messages.o commands.o inout.o
+OBJECTS = conexaoRawSocket.o messages.o commands.o inout.o
 LDLIBS = -lreadline
-all: master slave
+all: master slave kermit
 	make clean
 
 master: $(OBJECTS)
+kermit: $(OBJECTS)
 slave: $(OBJECTS)
 
 clean:
 	rm -rf *.o
 
 purge: clean
-	rm -f master slave
+	rm -f master slave kermit
 
 remake: purge
 	make
