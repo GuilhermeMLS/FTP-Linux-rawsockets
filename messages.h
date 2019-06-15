@@ -2,7 +2,7 @@
 #define __MSGS
 #include <stdio.h>
 
-#include "connection.h"
+#include "conexaoRawSocket.h"
 #include <time.h> 
 
 #define PREAMBLE 126
