@@ -1,5 +1,5 @@
 CC = gcc
-CFLAGS = -Wall -g -DDEBUG
+CFLAGS = -Wall -O3 # -DDEBUG
 OBJECTS = conexaoRawSocket.o messages.o commands.o inout.o
 LDLIBS = -lreadline
 all: master slave kermit
