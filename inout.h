@@ -1,4 +1,3 @@
-
 #ifndef __INOUT
 #define  __INOUT
 
@@ -13,9 +12,6 @@
 
 #define REMOTE 'R'
 #define LOCAL 'L'
-
-extern char context;
-
 #define CMD_QUIT 10
 #define CMD_REMOTE 20
 #define CMD_LOCAL 21
@@ -24,6 +20,8 @@ extern char context;
 #define CMD_PUT 42
 #define CMD_GET 43
 #define CMD_UNK 50
+
+extern char context;
 
 int checkSpace(long long int size);
 
